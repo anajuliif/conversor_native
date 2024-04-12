@@ -26,6 +26,7 @@ export default function App() {
     setModalVisible(true);
   }
 
+  //esta função vai limpar o input quando o usuário fechar o modal, por isso o setCelsius esta vazio
   function limparInput() {
     setCelsius("");
     setModalVisible(false);
@@ -37,6 +38,7 @@ export default function App() {
       <TextInput
         style={styles.input}
         placeholder="Insira a temperatura em °C"
+        //"onChangeText" vai mudar o valor de "cel" para o valor que o usuário inserirno input
         onChangeText={(cel) => setCelsius(cel)}
         inputMode="numeric"
         value={cel}
@@ -46,8 +48,10 @@ export default function App() {
       </TouchableOpacity>
 
       <Modal
+        //o "transparent={true}" modal, permite que a tela do modal não ocupe a tela principal toda
         transparent={true}
         visible={modalVisible}
+        //"onRequestFechar" está chamando a função "limparInput" para quando o modal for fechado, o input esteja limpo
         onRequestFechar={() => {
           limparInput();
         }}
