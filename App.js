@@ -21,11 +21,14 @@ export default function App() {
   //a const fahrenheit vai converter a temperatura de celsius para fahrenheit
   //o setFahrenheit vai receber esse novo valor da const fahrenheit, e a setFarenheit vai passar esse novo valor para a const fah
   function calcTemperatura() {
-    const fahrenheit = (parseFloat(cel) * 9) / 5 + 32;
-    setFahrenheit(fahrenheit);
-    setModalVisible(true);
+    if (cel === "") {
+      alert("Insira um valor no input, por favor");
+    } else {
+      const fahrenheit = (parseFloat(cel) * 9) / 5 + 32;
+      setFahrenheit(fahrenheit);
+      setModalVisible(true);
+    }
   }
-
   //esta função vai limpar o input quando o usuário fechar o modal, por isso o setCelsius esta vazio
   function limparInput() {
     setCelsius("");
@@ -38,7 +41,7 @@ export default function App() {
       <TextInput
         style={styles.input}
         placeholder="Insira a temperatura em °C"
-        //"onChangeText" vai mudar o valor de "cel" para o valor que o usuário inserirno input
+        //"onChangeText" vai mudar o valor de "cel" para o valor que o usuário inserir no input
         onChangeText={(cel) => setCelsius(cel)}
         inputMode="numeric"
         value={cel}
